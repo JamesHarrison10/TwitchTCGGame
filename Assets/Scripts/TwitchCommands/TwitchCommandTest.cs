@@ -1,18 +1,31 @@
+using System.Threading.Tasks;
 using TwitchIntegration;
-using UnityEngine;
-using TMPro;
+using Unity.VisualScripting;
+using UnityEngine.UIElements;
 
 public class TwitchCommandTest : TwitchMonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI counterText;
+    public PackOpenScript POS;
 
-    private string textString  = " ";
-
-    [TwitchCommand("CountUp", "c", "C")]
-    public void displayTextToScreen(string chatText)
+    [TwitchCommand("CurrentCards", "currentcards", "current")]
+    public void showCurrentCardsInChat()
     {
-        textString += "\n" + chatText;
+        string currentCards = " ";
 
-        counterText.text = textString;  
+        if (POS.sortedCards.Count > 0)
+        {
+            foreach (var card in POS.sortedCards)
+            {
+                currentCards += $" {card.name} Owned By: {card.cardOwner} \n";
+            }
+
+            TwitchManager.SendChatMessage($"These are the top current cards: \n" +
+            $"{currentCards}");
+            //display top cards in chat
+        }
+        else
+        {
+            TwitchManager.SendChatMessage("There are no drawn cards");
+        }
     }
 }

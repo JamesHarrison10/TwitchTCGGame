@@ -33,6 +33,7 @@ public class PackOpenScript : TwitchMonoBehaviour
     [SerializeField] private List<CardSO> rareCards;
     [SerializeField] private List<CardSO> epicCards;
     [SerializeField] private List<CardSO> legendaryCards;
+    public List<CardSO> sortedCards = new List<CardSO>();
 
     [Header("Card Stuff")]
     [SerializeField] private List<CardSO> topCards;
@@ -86,7 +87,7 @@ public class PackOpenScript : TwitchMonoBehaviour
         {
             cardChosen.cardOwner = user;
 
-            TwitchManager.SendChatMessage($"Card Opening: {user.displayname} has opened a {cardChosen.rarity.ToString()} Card, Named: {cardChosen.cardName.ToString()}");
+            TwitchManager.SendChatMessage($"Card Opening: {user.displayname} has opened... \n A {cardChosen.rarity.ToString()}!, Named: {cardChosen.cardName.ToString()}!!!");
 
             cardSpawn(cardChosen);
             UpdatePulls(user);
@@ -138,11 +139,13 @@ public class PackOpenScript : TwitchMonoBehaviour
         newCard.GetComponent<CardPrefabScript>().Card = selectedCard;
 
         lastPulleCard = newCard;
+
+        StartCoroutine(removeCard(selectedCard));
     }
 
     public void UpdatePulls(TwitchUser user)
     {
-        List<CardSO> sortedCards = new List<CardSO>();
+        //List<CardSO> sortedCards = new List<CardSO>();
 
         //sort the list based off of Rarity
         for (int i = 0; i < topCards.Count; i++)
@@ -197,6 +200,13 @@ public class PackOpenScript : TwitchMonoBehaviour
             if (e == c) count++;
         }
         return count;
+    }
+
+    private IEnumerator removeCard(CardSO currentCard)
+    {
+        yield return new WaitForSeconds(90);
+
+        Destroy(currentCard);
     }
 
     private bool isMoreRare(Rarity A, Rarity B)

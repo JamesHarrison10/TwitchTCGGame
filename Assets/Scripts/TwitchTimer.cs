@@ -65,7 +65,7 @@ public class TwitchTimer : TwitchMonoBehaviour
     {
         isRunning = true;
 
-        TwitchManager.SendChatMessage("A New Card Is Up For Grabs Type !Join To Register For The Pack Opening");
+        TwitchManager.SendChatMessage($"A New Card Is Up For Grabs Type !Join To Register For The Pack Opening \n {eventCountdown.ToString()} seconds left to enter");
 
         canJoin = true;
 
@@ -76,7 +76,7 @@ public class TwitchTimer : TwitchMonoBehaviour
 
     private IEnumerator countDown()
     {
-        TwitchManager.SendChatMessage($"Players have {eventCountdown.ToString()} seconds left to enter");
+        //TwitchManager.SendChatMessage($"Players have {eventCountdown.ToString()} seconds left to enter");
         yield return new WaitForSeconds(eventCountdown);
 
         drawWinner();
