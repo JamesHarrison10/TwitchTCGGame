@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d1ab20ed652e54dbad36ecc15a2484, type: 3}
+  m_Name: Card_Owen
+  m_EditorClassIdentifier: 
+  cardOwner:
+    badgeinfo: 
+    badges: moderator/1,twitchrecap2023/1
+    bits: 
+    color: '#1E90FF'
+    displayname: imat0m1c
+    emotes: 
+    id: 3b2806f2e257488e96fdc56a209e1d82
+    roomid: 138114578
+    mod: 1
+    subscriber: 0
+    turbo: 0
+    tmisentts: 1755696229654
+    userid: 589553040
+    usertype: 'mod :imat0m1c!imat0m1c@imat0m1c.tmi.twitch.tv PRIVMSG #mrmexx :'
+    clientnonce: cb7fceb70a500871eebf3bbbaffc5e34
+    flags: 
+  cardName: OWEN.
+  description: NOT AGAIN!!!! "Owen the carry"
+  rarity: 1
+  icon: {fileID: 0}
+  score: 0
+  cardColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
