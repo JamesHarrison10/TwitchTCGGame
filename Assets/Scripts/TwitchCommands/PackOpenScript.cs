@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using TwitchIntegration;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -44,7 +45,7 @@ public class PackOpenScript : TwitchMonoBehaviour
     public Transform ShowCardLocation;
     public Transform TopCardsUILocation;
 
-    private GameObject lastPulleCard;
+    private GameObject lastPulledCard;
 
     private int total;
 
@@ -57,7 +58,7 @@ public class PackOpenScript : TwitchMonoBehaviour
 
         totalPulls++;
 
-        Destroy(lastPulleCard);
+        Destroy(lastPulledCard);
 
         foreach (var item in cardTable)
         {
@@ -138,7 +139,7 @@ public class PackOpenScript : TwitchMonoBehaviour
 
         newCard.GetComponent<CardPrefabScript>().Card = selectedCard;
 
-        lastPulleCard = newCard;
+        lastPulledCard = newCard;
 
         StartCoroutine(removeCard(selectedCard));
     }
@@ -204,9 +205,9 @@ public class PackOpenScript : TwitchMonoBehaviour
 
     private IEnumerator removeCard(CardSO currentCard)
     {
-        yield return new WaitForSeconds(90);
+        yield return new WaitForSeconds(60);
 
-        Destroy(currentCard);
+        Destroy(lastPulledCard);
     }
 
     private bool isMoreRare(Rarity A, Rarity B)

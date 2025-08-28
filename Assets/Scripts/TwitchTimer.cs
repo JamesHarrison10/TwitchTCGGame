@@ -24,12 +24,13 @@ public class TwitchTimer : TwitchMonoBehaviour
             if(isRunning == false)
             {
                 AnnounceEvent();
+                StopCoroutine(timerCoroutine());
             }
         }
         
     }
 
-    [TwitchCommand("Join", "join")]
+    [TwitchCommand("Join", "join", "JOIN")]
     public void JoinPacKOpening(TwitchUser user)
     {
         if (canJoin && !registeredUsers.Contains(user))

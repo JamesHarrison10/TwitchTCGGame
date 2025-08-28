@@ -7,7 +7,7 @@ public class TwitchCommandTest : TwitchMonoBehaviour
 {
     public PackOpenScript POS;
 
-    [TwitchCommand("CurrentCards", "currentcards", "current")]
+    [TwitchCommand("Cards", "cards", "CARDS")]
     public void showCurrentCardsInChat()
     {
         string currentCards = " ";
@@ -25,7 +25,7 @@ public class TwitchCommandTest : TwitchMonoBehaviour
         }
         else
         {
-            TwitchManager.SendChatMessage("There are no drawn cards");
+            TwitchManager.SendChatMessage("There are no cards drawn");
         }
     }
 }
