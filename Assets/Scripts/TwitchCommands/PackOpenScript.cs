@@ -34,7 +34,7 @@ public class PackOpenScript : TwitchMonoBehaviour
     [SerializeField] private List<CardSO> rareCards;
     [SerializeField] private List<CardSO> epicCards;
     [SerializeField] private List<CardSO> legendaryCards;
-    public List<CardSO> sortedCards = new List<CardSO>();
+    //public List<CardSO> sortedCards = new List<CardSO>();
 
     [Header("Card Stuff")]
     [SerializeField] private List<CardSO> topCards;
@@ -88,7 +88,7 @@ public class PackOpenScript : TwitchMonoBehaviour
         {
             cardChosen.cardOwner = user;
 
-            TwitchManager.SendChatMessage($"Card Opening: {user.displayname} has opened... \n A {cardChosen.rarity.ToString()}!, Named: {cardChosen.cardName.ToString()}!!!");
+            TwitchManager.SendChatMessage($"Card Opening: {user.displayname} has opened... A {cardChosen.rarity.ToString()}!, Named: {cardChosen.cardName.ToString()}!!!");
 
             cardSpawn(cardChosen);
             UpdatePulls(user);
@@ -146,13 +146,14 @@ public class PackOpenScript : TwitchMonoBehaviour
 
     public void UpdatePulls(TwitchUser user)
     {
-        //List<CardSO> sortedCards = new List<CardSO>();
+        List<CardSO> sortedCards = new List<CardSO>();
 
         //sort the list based off of Rarity
         for (int i = 0; i < topCards.Count; i++)
         {
             var highestCard = nothingCard;
             highestCard.rarity = Rarity.Nothing;
+
             foreach (CardSO card in topCards)
             {
                 if (isMoreRare(card.rarity, highestCard.rarity) && countCards(card, topCards) > countCards(card, sortedCards))

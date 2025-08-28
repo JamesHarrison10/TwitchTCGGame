@@ -6,8 +6,8 @@ public class UiManager : MonoBehaviour
 {
     [SerializeField] GameObject settingsMenu;
 
-    [SerializeField] TextMeshProUGUI _timerInputText;
-    [SerializeField] TextMeshProUGUI _eventInputText;
+    [SerializeField] TMP_InputField _timerInputText;
+    [SerializeField] TMP_InputField _eventInputText;
 
     public TwitchTimer twitchTimer;
 
@@ -23,28 +23,25 @@ public class UiManager : MonoBehaviour
             return;
         }
 
-        string timerText = _timerInputText.text;
-        int timerInput;
+        string timerText = _timerInputText.text.Trim();
+        string eventText = _eventInputText.text.Trim();
 
-        if(int.TryParse(timerText, out timerInput))
+        if(float.TryParse(timerText, out float parsedTimer))
         {
-            twitchTimer.timerLength = timerInput;
+            twitchTimer.timerLength = parsedTimer;
         }
         else
         {
-            Debug.LogError("Parsed Interger Failed");
+            Debug.Log("Invalid Input for timer");
         }
 
-        string eventText = _eventInputText.text;
-        int eventInput;
-
-        if(int.TryParse(eventText, out eventInput))
+        if (float.TryParse(eventText, out float parsedEvent))
         {
-            twitchTimer.eventCountdown = eventInput;
+            twitchTimer.eventCountdown = parsedEvent;
         }
         else
         {
-            Debug.LogError("Parsed Interger Failed");
+            Debug.Log("Invalid Input for timer");
         }
     }
 

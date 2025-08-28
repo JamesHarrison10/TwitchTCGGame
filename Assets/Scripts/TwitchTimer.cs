@@ -16,15 +16,22 @@ public class TwitchTimer : TwitchMonoBehaviour
 
     private bool isRunning;
 
+    private void Start()
+    {
+        isRunning = false;
+
+        StartCoroutine(timerCoroutine());
+    }
+
     [TwitchCommand("ModOpening", "mb")]
     public void ModOpening(TwitchUser user)
     {
-        if(user.mod == "1")
+        if(user.mod == "1" || user.displayname == "MrMexx")
         {
             if(isRunning == false)
             {
+                StopAllCoroutines();
                 AnnounceEvent();
-                StopCoroutine(timerCoroutine());
             }
         }
         
@@ -48,13 +55,6 @@ public class TwitchTimer : TwitchMonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        isRunning = false;
-
-        StartCoroutine(timerCoroutine());
-    }
-
     private IEnumerator timerCoroutine()
     {
         yield return new WaitForSeconds(timerLength);
@@ -66,7 +66,7 @@ public class TwitchTimer : TwitchMonoBehaviour
     {
         isRunning = true;
 
-        TwitchManager.SendChatMessage($"A New Card Is Up For Grabs Type !Join To Register For The Pack Opening \n {eventCountdown.ToString()} seconds left to enter");
+        TwitchManager.SendChatMessage($"A New Card Is Up For Grabs Type !Join To Register For The Pack Opening {eventCountdown.ToString()} seconds left to enter");
 
         canJoin = true;
 

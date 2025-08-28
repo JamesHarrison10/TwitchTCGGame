@@ -939,8 +939,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsMenu: {fileID: 1466784277}
-  _timerInputText: {fileID: 45765957}
-  _eventInputText: {fileID: 783880915}
+  _timerInputText: {fileID: 1163226313}
+  _eventInputText: {fileID: 1693709472}
   twitchTimer: {fileID: 533060656}
 --- !u!4 &340684202
 Transform:
@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac18f6816c9d594bb9cb64be5614e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counterText: {fileID: 263144412}
+  POS: {fileID: 0}
 --- !u!4 &533060653
 Transform:
   m_ObjectHideFlags: 0
