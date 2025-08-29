@@ -11,6 +11,12 @@ public class UiManager : MonoBehaviour
 
     public TwitchTimer twitchTimer;
 
+    private void Start()
+    {
+        _timerInputText.text = twitchTimer.timerLength.ToString();
+        _eventInputText.text = twitchTimer.eventCountdown.ToString();
+    }
+
     public void ConnectGame()
     {
         updateTimer();
